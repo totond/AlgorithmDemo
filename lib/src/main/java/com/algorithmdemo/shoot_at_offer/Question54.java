@@ -8,13 +8,13 @@ public class Question54 {
     private static int index = 0;
 
     public static void main(String[] args) {
-        Node node1 = new Node(5);
-        Node node2 = new Node(3);
-        Node node3 = new Node(7);
-        Node node4 = new Node(2);
-        Node node5 = new Node(4);
-        Node node6 = new Node(6);
-        Node node7 = new Node(8);
+        BinaryTreeNode node1 = new BinaryTreeNode(5);
+        BinaryTreeNode node2 = new BinaryTreeNode(3);
+        BinaryTreeNode node3 = new BinaryTreeNode(7);
+        BinaryTreeNode node4 = new BinaryTreeNode(2);
+        BinaryTreeNode node5 = new BinaryTreeNode(4);
+        BinaryTreeNode node6 = new BinaryTreeNode(6);
+        BinaryTreeNode node7 = new BinaryTreeNode(8);
         node1.left = node2;
         node1.right = node3;
         node2.left = node4;
@@ -30,25 +30,24 @@ public class Question54 {
     }
 
 
-    private static int findKth(Node root, int k){
+    private static int findKth(BinaryTreeNode root, int k){
         if (root == null){
             return -1;
         }
         index = k;
-        Node target = findKthNode(root);
+        BinaryTreeNode target = findKthNode(root);
         if (target == null){
             return -1;
         }
         return target.value;
     }
 
-    public static Node findKthNode(Node rootNode){
-        Node target = null;
+    public static BinaryTreeNode findKthNode(BinaryTreeNode rootNode){
+        BinaryTreeNode target = null;
 
         if (rootNode.left != null) {
             target = findKthNode(rootNode.left);
         }
-        System.out.println("index:" + index);
         if (target == null) {
             if (index == 1) {
                 target = rootNode;
@@ -66,11 +65,3 @@ public class Question54 {
 
 }
 
-class Node{
-    public int value;
-    public Node left = null;
-    public Node right = null;
-    public Node(int value){
-        this.value = value;
-    }
-}
