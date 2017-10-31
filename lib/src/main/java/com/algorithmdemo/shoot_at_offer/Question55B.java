@@ -17,8 +17,8 @@ public class Question55B {
         node1.right = node3;
         node2.left = node4;
         node2.right = node5;
-//        node3.left = node6;
-//        node3.right = node7;
+        node3.left = node6;
+        node3.right = node7;
 
         System.out.println("node1是否平衡二叉树：" + isBalancedBinaryTree(node1));
         System.out.println("空输入：" + isBalancedBinaryTree(null));
