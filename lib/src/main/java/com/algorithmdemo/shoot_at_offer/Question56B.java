@@ -37,6 +37,7 @@ public class Question56B {
 
         int[] bitSum = new int[32];
 
+        //将数组里面每个数字二进制表示的每一位都加起来，放到bitSum
         for (int i : intArray) {
             int bitMask = 1;
             for (int j = 31; j >= 0; --j){
@@ -48,10 +49,16 @@ public class Question56B {
             }
         }
 
+        //将bitSum里面的数字向3取余
         int result = 0;
         for (int i = 0; i < 32; i++){
             result = result << 1;
-            result += bitSum[i] % 3;
+            //如果余数不是0，则说明那个位置是1
+            if (((bitSum[i] % 3) != 0)){
+                result++;
+            //下面这种方式是书本的，结果也可以，暂时不明觉厉
+//            result += bitSum[i] % 3;
+            }
         }
 
         return result;

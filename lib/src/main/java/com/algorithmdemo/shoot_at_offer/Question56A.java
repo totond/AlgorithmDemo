@@ -48,6 +48,11 @@ public class Question56A {
         System.out.println("只出现一次的数字是：" + number1 + "和" + number2);
     }
 
+    /**
+     * 从右到左，寻找输入数字在二进制表示中，第一个位是1的位置
+     * @param i 输入的数
+     * @return 第一个位是1的位置
+     */
     private static int findFirstBitIs1(int i){
         int index = 0;
         while (((i & 1) == 0) && index < 32){
@@ -57,6 +62,12 @@ public class Question56A {
         return index;
     }
 
+    /**
+     * 这个数的第index位是否为1
+     * @param number 输入的数
+     * @param index 位置
+     * @return 是否为1
+     */
     private static boolean isBit1(int number, int index){
         number = number >> index;
         return (number & 1) == 1;

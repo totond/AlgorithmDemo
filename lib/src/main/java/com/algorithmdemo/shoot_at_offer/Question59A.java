@@ -8,7 +8,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 /**
- * Created by yany on 2017/11/3.
+ * 给定一个数组和滑动窗口的大小，请找出所有滑动窗口的最大值。
  */
 
 public class Question59A {
