@@ -11,7 +11,6 @@ public class Question57B {
         printNumbers(34);
         printNumbers(35);
         printNumbers(4);
-
     }
 
     public static void printNumbers(int sum) {
@@ -24,14 +23,17 @@ public class Question57B {
     private static boolean findContinuousSequence(int sum) {
         int start = 1;
         int end = 2;
+        //累加的数
         int curSum = start + end;
         int mid = (sum + 1) / 2;
         boolean found = false;
+        //从1开始数，直到(sum + 1) / 2的数为止，因为超过了这个数的话，两个连续相加的数肯定会大于sum
         while (start < mid) {
             if (curSum == sum) {
                 printContinuous(start, end);
                 found = true;
             }
+            //如果累加的数大于sum，而最小数还没到达界限，则最小数向前移动
             while (curSum > sum && start < mid) {
                 curSum -= start;
                 start++;
@@ -46,6 +48,11 @@ public class Question57B {
         return found;
     }
 
+    /**
+     * 用于输出连续数的方法
+     * @param start 连续数的开始
+     * @param end 连续数的终结
+     */
     private static void printContinuous(int start, int end) {
         for (int i = start; i <= end; i++) {
             System.out.print(i + " ");

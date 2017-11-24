@@ -27,9 +27,11 @@ public class Question57A {
             return false;
         }
 
+        //定义前后两个index，相当于指针
         int start = 0;
         int end = intArray.length - 1;
 
+        //一前一后向中间遍历，如果它们的和加起来是大于所求数，则end--，小于就start++，等于就返回结果
         while (start < end){
             int curSum = intArray[start] + intArray[end];
             if (curSum == sum){

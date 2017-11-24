@@ -33,11 +33,16 @@ public class Question59A {
         if (input == null || size < 1 || input.length < size){
             return null;
         }
+
+        //也可以使用数组来装结果
 //        int[] results = new int[input.length - size + 1];
         ArrayList<Integer> results = new ArrayList<>();
+        //创建一个双端队列，队头是用来装大的元素，队尾是装小的，从大到小排队
         Deque<Integer> deque = new LinkedList<>();
 
+        //当滑动窗口还没完全滑进数组时的处理
         for (int i = 0; i < size; i++){
+            //当遇到的数是大于队列里面的数时，队尾元素出队，直到队尾元素代表的数值比它大或者队列为空，然后进队尾
             while (!deque.isEmpty() && input[i] >= input[deque.peekLast()]){
                 deque.pollLast();
             }
@@ -45,15 +50,20 @@ public class Question59A {
         }
 
         for (int i = size; i < input.length; i++){
+            //把队头元素做为结果
             results.add(input[deque.peekFirst()]);
+            //当遇到的数是大于队列里面的数时，队尾元素出队，直到队尾元素代表的数值比它大或者队列为空，然后进队尾
             while (!deque.isEmpty() && input[i] >= input[deque.peekLast()]){
                 deque.pollLast();
             }
+            //如果队头元素的index已经不处在滑动窗口，则出队，然后代表第二大的元素成为了队头，如果还不在，则继续出队，直到在为止
             while (!deque.isEmpty() && deque.peekFirst() <= i - size){
                 deque.pollFirst();
             }
+            //经过前面的处理，当前元素已经可以进入处理过的队列了
             deque.addLast(i);
         }
+        //把最后的滑动窗口元素队头元素输出为结果
         results.add(input[deque.peekFirst()]);
         return results;
     }
