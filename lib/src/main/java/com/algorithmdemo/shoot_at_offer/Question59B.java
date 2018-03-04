@@ -55,7 +55,7 @@ class QueueWithMax{
      * @param number 入队数字
      */
     public void pushBack(int number){
-        //当遇到的数是大于队列里面的数时，队尾元素出队，直到队尾元素代表的数值比它大或者队列为空，然后进队尾
+        //如果入队的数是大于等于队列队尾元素时，队尾元素出队，直到新的队尾元素代表的数值大于它或者队列为空，然后进队尾
         while (!maxDeque.isEmpty() && number >= maxDeque.peekLast().number){
             maxDeque.pollLast();
         }

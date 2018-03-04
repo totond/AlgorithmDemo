@@ -52,7 +52,7 @@ public class Question59A {
         for (int i = size; i < input.length; i++){
             //把队头元素做为结果
             results.add(input[deque.peekFirst()]);
-            //当遇到的数是大于队列里面的数时，队尾元素出队，直到队尾元素代表的数值比它大或者队列为空，然后进队尾
+            //如果遇到的数是大于等于队列队尾元素时，队尾元素出队，直到新的队尾元素代表的数值大于它或者队列为空，然后进队尾
             while (!deque.isEmpty() && input[i] >= input[deque.peekLast()]){
                 deque.pollLast();
             }
