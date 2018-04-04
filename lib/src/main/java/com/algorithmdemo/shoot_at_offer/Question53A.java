@@ -8,28 +8,29 @@ public class Question53A {
 
     public static void main(String[] args){
         int[] array = {-1,-1,0,2,3,3,4,5,5,6,7,7,7,8,9};
-        System.out.println("搜索2的次数：" + getRepeatNumberTimes(array,2));
-        System.out.println("搜索-1的次数：" + getRepeatNumberTimes(array,-1));
-        System.out.println("搜索7的次数：" + getRepeatNumberTimes(array,7));
-        System.out.println("搜索9的次数：" + getRepeatNumberTimes(array,9));
-        System.out.println("搜索10的次数：" + getRepeatNumberTimes(array,10));
-        System.out.println("搜索-5的次数：" + getRepeatNumberTimes(array,10));
+        System.out.println("搜索2的次数：" + GetNumberOfK(array,2));
+        System.out.println("搜索-1的次数：" + GetNumberOfK(array,-1));
+        System.out.println("搜索7的次数：" + GetNumberOfK(array,7));
+        System.out.println("搜索9的次数：" + GetNumberOfK(array,9));
+        System.out.println("搜索10的次数：" + GetNumberOfK(array,10));
+        System.out.println("搜索-5的次数：" + GetNumberOfK(array,10));
     }
 
     /**
      * 寻找一个排序数组里面数的出现次数
-     * @param inputArray
-     * @param number
-     * @return
+     * @param inputArray 输入数组
+     * @param number 目标数
+     * @return 返回0代表找不到
      */
-    public static int getRepeatNumberTimes(int[] inputArray, int number){
+    public static int GetNumberOfK(int[] inputArray, int number){
         if (inputArray == null || inputArray.length == 0){
             return 0;
         }
+        //找出次数
         int numberIndex = findNumber(inputArray,0,inputArray.length-1,number);
-//        System.out.println("index " + numberIndex);
+
         if (numberIndex == -1){
-            return -1;
+            return 0;
         }else {
             int start = findRepeatStart(inputArray,number,numberIndex);
             int end = findRepeatEnd(inputArray,number,numberIndex);
