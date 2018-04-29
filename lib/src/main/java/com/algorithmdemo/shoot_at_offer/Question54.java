@@ -1,5 +1,7 @@
 package com.algorithmdemo.shoot_at_offer;
 
+import java.util.Stack;
+
 /**
  * 给定一颗二叉搜索树，请找出其中第k大的结点。
  */
@@ -22,27 +24,28 @@ public class Question54 {
         node3.left = node6;
         node3.right = node7;
 
-        System.out.println("第4大的数：" + findKth(node1,4));
-        System.out.println("第1大的数：" + findKth(node1,1));
-        System.out.println("第7大的数：" + findKth(node1,7));
-        System.out.println("输入空：" + findKth(null,1));
-        System.out.println("k不符合格式，如超出结点个数或者为0或负数：" + findKth(node1,0));
+        System.out.println("第4大的数：" + findKth(node1, 4));
+        System.out.println("第1大的数：" + findKth(node1, 1));
+        System.out.println("第7大的数：" + findKth(node1, 7));
+        System.out.println("输入空：" + findKth(null, 1));
+        System.out.println("k不符合格式，如超出结点个数或者为0或负数：" + findKth(node1, 0));
     }
 
 
-    private static int findKth(BinaryTreeNode root, int k){
-        if (root == null){
+    private static int findKth(BinaryTreeNode root, int k) {
+        if (root == null) {
             return -1;
         }
         index = k;
         BinaryTreeNode target = findKthNode(root);
-        if (target == null){
+        if (target == null) {
             return -1;
         }
         return target.value;
     }
 
-    public static BinaryTreeNode findKthNode(BinaryTreeNode rootNode){
+    //二叉搜索树的中序遍历就是从小到大遍历，所以只需要中序遍历到第k个结点
+    private static BinaryTreeNode findKthNode(BinaryTreeNode rootNode) {
         BinaryTreeNode target = null;
 
         if (rootNode.left != null) {
@@ -55,7 +58,7 @@ public class Question54 {
             }
             index--;
         }
-        if (target == null && rootNode.right != null){
+        if (target == null && rootNode.right != null) {
             target = findKthNode(rootNode.right);
         }
 
@@ -63,5 +66,31 @@ public class Question54 {
     }
 
 
+    //牛客版本
+    TreeNode KthNode(TreeNode pRoot, int k) {
+        if (pRoot == null || k <= 0) {
+            return null;
+        }
+
+        TreeNode cur = pRoot;
+        Stack<TreeNode> stack = new Stack<>();
+
+        while (cur != null || !stack.empty()) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
+            }
+            if (!stack.empty()){
+                cur = stack.pop();
+                k--;
+                if (k == 0){
+                    return cur;
+                }else {
+                    cur = cur.right;
+                }
+            }
+        }
+        return null;
+    }
 }
 

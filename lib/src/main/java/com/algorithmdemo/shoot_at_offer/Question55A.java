@@ -1,7 +1,10 @@
 package com.algorithmdemo.shoot_at_offer;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
- * 二叉树的深度
+ * 输入1棵二叉树的根节点，求该树的深度。
  */
 
 public class Question55A {
@@ -26,6 +29,7 @@ public class Question55A {
         System.out.println("空输入：" + getDepth(null));
     }
 
+    //通过递归的方式，求出每个子树的深度
     public static int getDepth(BinaryTreeNode node) {
         if (node == null) {
             return 0;
@@ -34,7 +38,34 @@ public class Question55A {
         int rightDepth = 0;
         leftDepth = getDepth(node.left);
         rightDepth = getDepth(node.right);
+        //子树深度加上1就是当前树的深度
         return 1 + (leftDepth > rightDepth ? leftDepth : rightDepth);
+    }
+
+    public int TreeDepth(TreeNode root) {
+        if (root == null){
+            return 0;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        int depth = 0;
+        TreeNode cur;
+
+        while (!queue.isEmpty()){
+            int len = queue.size();
+            for(int i = 0; i < len; i++){
+                cur = queue.poll();
+                if (cur.left != null){
+                    queue.offer(cur.left);
+                }
+                if (cur.right != null){
+                    queue.offer(cur.right);
+                }
+            }
+            depth++;
+        }
+
+        return depth;
     }
 }
 
