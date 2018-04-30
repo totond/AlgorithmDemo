@@ -9,13 +9,13 @@ import java.util.Queue;
 
 public class Question55A {
     public static void main(String[] args) {
-        BinaryTreeNode node1 = new BinaryTreeNode(5);
-        BinaryTreeNode node2 = new BinaryTreeNode(3);
-        BinaryTreeNode node3 = new BinaryTreeNode(7);
-        BinaryTreeNode node4 = new BinaryTreeNode(2);
-        BinaryTreeNode node5 = new BinaryTreeNode(4);
-        BinaryTreeNode node6 = new BinaryTreeNode(6);
-        BinaryTreeNode node7 = new BinaryTreeNode(8);
+        TreeNode node1 = new TreeNode(5);
+        TreeNode node2 = new TreeNode(3);
+        TreeNode node3 = new TreeNode(7);
+        TreeNode node4 = new TreeNode(2);
+        TreeNode node5 = new TreeNode(4);
+        TreeNode node6 = new TreeNode(6);
+        TreeNode node7 = new TreeNode(8);
         node1.left = node2;
         node1.right = node3;
         node2.left = node4;
@@ -30,7 +30,7 @@ public class Question55A {
     }
 
     //通过递归的方式，求出每个子树的深度
-    public static int getDepth(BinaryTreeNode node) {
+    public static int getDepth(TreeNode node) {
         if (node == null) {
             return 0;
         }

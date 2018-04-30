@@ -10,13 +10,13 @@ public class Question54 {
     private static int index = 0;
 
     public static void main(String[] args) {
-        BinaryTreeNode node1 = new BinaryTreeNode(5);
-        BinaryTreeNode node2 = new BinaryTreeNode(3);
-        BinaryTreeNode node3 = new BinaryTreeNode(7);
-        BinaryTreeNode node4 = new BinaryTreeNode(2);
-        BinaryTreeNode node5 = new BinaryTreeNode(4);
-        BinaryTreeNode node6 = new BinaryTreeNode(6);
-        BinaryTreeNode node7 = new BinaryTreeNode(8);
+        TreeNode node1 = new TreeNode(5);
+        TreeNode node2 = new TreeNode(3);
+        TreeNode node3 = new TreeNode(7);
+        TreeNode node4 = new TreeNode(2);
+        TreeNode node5 = new TreeNode(4);
+        TreeNode node6 = new TreeNode(6);
+        TreeNode node7 = new TreeNode(8);
         node1.left = node2;
         node1.right = node3;
         node2.left = node4;
@@ -32,21 +32,21 @@ public class Question54 {
     }
 
 
-    private static int findKth(BinaryTreeNode root, int k) {
+    private static int findKth(TreeNode root, int k) {
         if (root == null) {
             return -1;
         }
         index = k;
-        BinaryTreeNode target = findKthNode(root);
+        TreeNode target = findKthNode(root);
         if (target == null) {
             return -1;
         }
-        return target.value;
+        return target.val;
     }
 
     //二叉搜索树的中序遍历就是从小到大遍历，所以只需要中序遍历到第k个结点
-    private static BinaryTreeNode findKthNode(BinaryTreeNode rootNode) {
-        BinaryTreeNode target = null;
+    private static TreeNode findKthNode(TreeNode rootNode) {
+        TreeNode target = null;
 
         if (rootNode.left != null) {
             target = findKthNode(rootNode.left);
@@ -54,7 +54,7 @@ public class Question54 {
         if (target == null) {
             if (index == 1) {
                 target = rootNode;
-                System.out.println(target.value);
+                System.out.println(target.val);
             }
             index--;
         }
