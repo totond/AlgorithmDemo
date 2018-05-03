@@ -20,7 +20,7 @@ public class Question23 {
         }
         ListNode p1 = pHead, p2 = pHead;
         int loopLength = 0;
-        //计算环的长度
+        //计算环的长度：两个指针，一个每次走一步，一个每次走两步，相遇的时候走了多少次，就说明环的长度多长
         while (p2 != null && p2.next != null) {
             p1 = p1.next;
             p2 = p2.next.next;

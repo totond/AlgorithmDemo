@@ -53,6 +53,7 @@ public class Question16 {
         double result = powerWithUnsignedExponent(base, exponent >> 1);
 
         result *= result;
+        //如果幂次数是奇数，则需要再乘以一次底数
         if ((exponent & 0x1) == 1){
             result = result * base;
         }

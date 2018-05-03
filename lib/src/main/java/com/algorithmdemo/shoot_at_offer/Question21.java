@@ -28,6 +28,7 @@ public class Question21 {
         int[] temp = new int[len];
         int left = 0, right = len - 1;
         int n = 0;
+        //分开奇数和偶数
         while (left <= right){
             if (isEven(array[n])){
                 System.out.println("l:" + left + "r:" + array[n]);
@@ -37,6 +38,7 @@ public class Question21 {
             }
             n++;
         }
+        //录入
         for (int i = 0; i < len; i++){
             if (i < left) {
                 array[i] = temp[i];

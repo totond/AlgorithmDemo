@@ -9,7 +9,7 @@ package com.algorithmdemo.shoot_at_offer;
 
 public class Question15 {
     public int NumberOf1(int n) {
-        //因为一个整数与比它小1的数进行或运算，它最靠近右边的1就会被消除掉
+        //因为一个整数与比它小1的数进行与运算，它最靠近右边的1就会被消除掉
         int count = 0;
         while (n != 0){
             //循环消除整数里面的1，直到n为0，就可以算出有多少个1

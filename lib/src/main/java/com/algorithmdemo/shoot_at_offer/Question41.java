@@ -34,9 +34,9 @@ public class Question41 {
     }
 
 
-    //最小堆，最小的在Last
+    //最小堆，最大的在Last
     TreeSet<Integer> smallSet = new TreeSet<>();
-    //最大堆，最大的在Last
+    //最大堆，最小的在Last
     TreeSet<Integer> bigSet = new TreeSet<>(Collections.<Integer>reverseOrder());
 
     public void Insert(Integer num) {
@@ -44,11 +44,11 @@ public class Question41 {
         if (((smallSet.size() + bigSet.size()) & 1) == 0){
             //如果目前数量是偶数数，则把新来的数加入到最大堆，最大堆里面最小的拿出来，加入最小堆
             bigSet.add(num);
-            smallSet.add(bigSet.pollFirst());
+            smallSet.add(bigSet.pollLast());
         }else {
             //如果目前数量是偶数数，则把新来的数加入到最小堆，最小堆里面最大的拿出来，加入最大堆
             smallSet.add(num);
-            bigSet.add(smallSet.pollFirst());
+            bigSet.add(smallSet.pollLast());
         }
 
     }
@@ -59,10 +59,10 @@ public class Question41 {
         }
         if (((smallSet.size() + bigSet.size()) & 1) == 0){
             //如果是偶数，则把最小堆最大的，和最大堆最小的两个数拿出来，返回平均值
-            return (((double) smallSet.first() + bigSet.first()) / 2);
+            return (((double) smallSet.last() + bigSet.last()) / 2);
         }else {
             //如果是偶数，则返回最小堆最大的数
-            return Double.valueOf(smallSet.first());
+            return Double.valueOf(smallSet.last());
         }
     }
 }
