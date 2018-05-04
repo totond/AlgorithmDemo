@@ -29,6 +29,8 @@ public class Question59A {
         ArrayUtils.printList(findMaxInWindows(array3,size3));
     }
 
+    //使用一个双端队列来保存index，队头放最大，队尾放较小，入队时先把比入队元素小的从队尾顶出去，再入队
+    //每次滑动后判断队头元素是否已经不再滑动窗口，是的话需要移除，让后面的顶上，再继续判断是否在
     public static ArrayList<Integer> findMaxInWindows(int[] input, int size){
         if (input == null || size < 1 || input.length < size){
             return null;
