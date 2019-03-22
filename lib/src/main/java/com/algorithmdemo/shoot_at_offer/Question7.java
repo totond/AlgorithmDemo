@@ -12,20 +12,21 @@ import java.util.LinkedList;
 public class Question7 {
     /**
      * 测试辅助算法：分层遍历二叉树，使用一个队列，也就是宽度优先遍历
+     *
      * @param root
      */
-    public static void levelTraversal(TreeNode root){
-        if(root==null)
-            return ;
+    public static void levelTraversal(TreeNode root) {
+        if (root == null)
+            return;
 
         LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
         queue.add(root);
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             TreeNode cur = queue.remove();
-            System.out.print(cur.val+" ");
-            if(cur.left!=null)
+            System.out.print(cur.val + " ");
+            if (cur.left != null)
                 queue.add(cur.left);
-            if(cur.right!=null)
+            if (cur.right != null)
                 queue.add(cur.right);
 
         }
@@ -33,10 +34,10 @@ public class Question7 {
 
     public static void main(String[] args) {
         //前序遍历{1,2,4,7,3,5,6,8} & 中序遍历序列{4,7,2,1,5,3,8,6}
-        int[] pre = {1,2,4,7,3,5,6,8};
-        int[] in = {4,7,2,1,5,3,8,6};
+        int[] pre = {1, 2, 4, 7, 3, 5, 6, 8};
+        int[] in = {4, 7, 2, 1, 5, 3, 8, 6};
         // 重建二叉树后，使用宽度遍历进行输出测试
-        levelTraversal(reConstructBinaryTree(pre,in));
+        levelTraversal(reConstructBinaryTree(pre, in));
 
 
     }
@@ -73,6 +74,7 @@ public class Question7 {
         root.right = constructNode(pre, pStart + 1 + leftLength, pEnd, in, pos + 1, iEnd);
         return root;
     }
+
 }
 
 

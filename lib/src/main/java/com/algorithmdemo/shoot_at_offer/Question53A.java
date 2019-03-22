@@ -26,7 +26,7 @@ public class Question53A {
         if (inputArray == null || inputArray.length == 0){
             return 0;
         }
-        //找出次数
+        //找出目标所在的index
         int numberIndex = findNumber(inputArray,0,inputArray.length-1,number);
 
         if (numberIndex == -1){

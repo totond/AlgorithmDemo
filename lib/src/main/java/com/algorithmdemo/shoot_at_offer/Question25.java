@@ -55,4 +55,46 @@ public class Question25 {
     }
 
     //还有一种递归解法，更简洁，但是效率低一点,以后实现
+
+    public ListNode Merge2(ListNode list1,ListNode list2) {
+        if (list1 == null) {
+            return list2;
+        } else if (list2 == null) {
+            return list1;
+        }
+
+        ListNode head, cur;
+        if (list1.val > list2.val){
+            head = cur = list2;
+            list2 = list2.next;
+        }else {
+            head = cur = list1;
+            list1 = list1.next;
+        }
+
+        while (list1 != null && list2 != null) {
+            if (list1.val > list2.val){
+                cur.next = list2;
+                cur = list2;
+                list2 = list2.next;
+            }else {
+                cur.next = list1;
+                cur = list1;
+                list1 = list1.next;
+            }
+
+        }
+
+        while (list1 != null) {
+            cur.next = list1;
+            cur = list1;
+            list1 = list1.next;
+        }
+        while (list2 != null) {
+            cur.next = list2;
+            cur = list2;
+            list2 = list2.next;
+        }
+        return head;
+    }
 }

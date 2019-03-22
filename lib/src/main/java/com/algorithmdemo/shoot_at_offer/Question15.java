@@ -8,7 +8,7 @@ package com.algorithmdemo.shoot_at_offer;
  */
 
 public class Question15 {
-    public int NumberOf1(int n) {
+    public static int NumberOf1(int n) {
         //因为一个整数与比它小1的数进行与运算，它最靠近右边的1就会被消除掉
         int count = 0;
         while (n != 0){
@@ -17,5 +17,10 @@ public class Question15 {
             count++;
         }
         return count;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(NumberOf1(-1));
+
     }
 }

@@ -1,6 +1,8 @@
 package com.algorithmdemo.shoot_at_offer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.TreeSet;
 
 /**
@@ -51,13 +53,13 @@ public class Question40 {
     private static int partition(int[] array, int low, int high) {
         int temp = array[low];
         while (low < high){
-            while (low < high && array[high] > temp){
+            while (low < high && array[high] >= temp){
                 high--;
             }
             if (low < high) {
                 array[low++] = array[high];
             }
-            while (low < high && array[low] < temp){
+            while (low < high && array[low] <= temp){
                 low++;
             }
             if (low < high){
@@ -74,7 +76,7 @@ public class Question40 {
     public static ArrayList<Integer> GetLeastNumbers_Solution_1(int [] input, int k) {
         if(input == null || input.length == 0 || k <= 0 || k > input.length) {
             System.out.println("输入的数据不合法");
-            return new ArrayList<>();
+            return new ArrayList<>(Arrays.asList(new Integer[]{1,2,3}));
         }
 
         TreeSet<Integer> set = new TreeSet<>();
